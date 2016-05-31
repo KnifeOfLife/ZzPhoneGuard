@@ -84,14 +84,16 @@ public class TelSmsSafeActivity extends Activity {
                         showInputBlackNumberDialog("");
                         break;
                     case R.id.tv_popup_black_contacts://从联系人添加
-                        Intent intent = new Intent(TelSmsSafeActivity.this,ContactsActivity.class);
-                        startActivityForResult(intent,1);
+                        Intent intent1 = new Intent(TelSmsSafeActivity.this,ContactsActivity.class);
+                        startActivityForResult(intent1,1);
                         break;
                     case R.id.tv_popup_black_phonelog://从电话记录中添加
-
+                        Intent intent2 = new Intent(TelSmsSafeActivity.this,PhoneLogActivity.class);
+                        startActivityForResult(intent2,1);
                         break;
                     case R.id.tv_popup_black_smslog://从短信记录中添加
-
+                        Intent intent3 = new Intent(TelSmsSafeActivity.this,SmsLogActivity.class);
+                        startActivityForResult(intent3,1);
                         break;
                     default:
                         break;

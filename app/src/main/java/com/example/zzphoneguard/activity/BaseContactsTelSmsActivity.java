@@ -3,6 +3,7 @@ package com.example.zzphoneguard.activity;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -30,7 +31,7 @@ public abstract class BaseContactsTelSmsActivity extends ListActivity {
     private static final int FINISH = 1;
     private ListView list;
     private MyAdapter adapter;
-    private List<ContactBean> contacts=new ArrayList<ContactBean>();
+    private List<ContactBean> contacts = new ArrayList<ContactBean>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +97,7 @@ public abstract class BaseContactsTelSmsActivity extends ListActivity {
                 SystemClock.sleep(300);
 //                contacts = ReadContactsEngine.readContacts(getApplicationContext());
                 contacts = getDatas();
+                System.out.println("联系人的个数："+contacts.size());
                 msg=Message.obtain();
                 msg.what=FINISH;
                 handle.sendMessage(msg);
@@ -124,7 +126,13 @@ public abstract class BaseContactsTelSmsActivity extends ListActivity {
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            View v=View.inflate(getApplicationContext(), R.layout.item_contacts,null);
+            View v=null;
+            if (convertView==null){
+                v = View.inflate(getApplicationContext(), R.layout.item_contacts,null);
+                convertView=v;
+            }else{
+                v=convertView;
+            }
             TextView tv_name= (TextView) v.findViewById(R.id.item_contact_name);
             TextView tv_phone= (TextView) v.findViewById(R.id.item_contact_phone);
             ContactBean contact=contacts.get(position);

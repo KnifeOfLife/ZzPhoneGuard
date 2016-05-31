@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:text="从短信记录"
+        android:text="从电话记录"
         android:textSize="20sp"
         android:textColor="#000000"/>
     <TextView
@@ -45,7 +45,7 @@
         android:layout_width="wrap_content"
         android:layout_height="50dp"
         android:gravity="center_vertical"
-        android:text="从电话记录"
+        android:text="从短信记录"
         android:textSize="20sp"
         android:textColor="#000000"/>
 
