@@ -93,7 +93,7 @@ public abstract class BaseContactsTelSmsActivity extends ListActivity {
                 Message msg = Message.obtain();
                 msg.what=LOADING;
                 handle.sendMessage(msg);
-                SystemClock.sleep(2000);
+                SystemClock.sleep(300);
 //                contacts = ReadContactsEngine.readContacts(getApplicationContext());
                 contacts = getDatas();
                 msg=Message.obtain();
