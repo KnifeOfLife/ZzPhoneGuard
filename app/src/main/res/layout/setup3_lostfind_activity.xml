@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center"
+        android:background="#aa0000ff"
+        android:textSize="25sp"
+        android:text="3，设置安全号码"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="请在下面的输入框中输入一个手机号码作为安全号码。\nSIM卡如果发生变化,报警短信就会发送给安全号码。"/>
+
+
+    <EditText
+        android:id="@+id/ed_safenumber"
+        android:inputType="phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/bt_setup3_selectnumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择安全号码"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:src="@drawable/phone"/>
+        <Button
+            android:onClick="next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="下一步"
+            android:textSize="20sp"/>
+        <Button
+            android:onClick="prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="上一步"
+            android:textSize="20sp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true">
+            <View
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:background="@android:drawable/presence_invisible"/>
+            <View
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:background="@android:drawable/presence_invisible"/>
+            <View
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:background="@android:drawable/presence_online"/>
+            <View
+                android:layout_width="20sp"
+                android:layout_height="20sp"
+                android:background="@android:drawable/presence_invisible"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+
+</LinearLayout>

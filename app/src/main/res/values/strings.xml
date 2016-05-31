@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">洲洲手机卫士</string>
+    <string name="sample_device_admin">洲洲手机卫士</string>
+    <string name="sample_device_admin_description">洲洲手机卫士防盗功能中的一键锁屏</string>
+</resources>

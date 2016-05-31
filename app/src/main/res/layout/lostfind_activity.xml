@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#aa0000ff">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:gravity="center"
+            android:textSize="25sp"
+            android:text="手机防盗"
+            android:layout_alignParentTop="true" />
+        <Button
+            android:id="@+id/bt_setup_lostfind"
+            android:layout_width="80dp"
+            android:layout_height="50dp"
+            android:text="设置"
+            android:textSize="25sp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="#00000000"/>
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#55000000"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="手机防盗功能是否开启"
+            android:textColor="#000000"
+            android:textSize="25sp"/>
+        <ImageView
+            android:id="@+id/iv_lostfind_issafe"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/unlock"/>
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp" android:background="#55000000"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:text="安全号码："
+            android:textColor="#000000"
+            android:textSize="25sp"/>
+        <TextView
+            android:id="@+id/tv_lostfind_safenumber"
+            android:layout_marginRight="10dp"
+            android:layout_alignParentRight="true"
+            android:gravity="center_vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:textSize="25sp"/>
+
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#55000000"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="如果您的手机丢失了，丢失手机会向安全号码发送SIM卡变更短信。同时，请使用安全号码向本手机发送以下命令短信：\nGPS追踪：#*gps*#\n远程清除数据：#*wipedata*#\n远程锁屏：#*lockscreen*#\n音乐报警：#*music*#"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+</LinearLayout>

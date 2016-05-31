@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:id="@+id/tv_home_title"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:gravity="center"
+        android:background="#aa0000ff"
+        android:layout_alignParentTop="true"
+        android:textSize="25sp"
+        android:text="主界面"
+        />
+    <com.example.zzphoneguard.view.MyTextView
+        android:id="@+id/mtv_home"
+        android:layout_below="@id/tv_home_title"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="后来很多人问我一个人夜晚踟蹰路上的心情，我想起的并不是孤单和路长，而是波澜壮阔的海和天空中闪耀的星光。"/>
+
+
+    <GridView
+        android:layout_centerInParent="true"
+        android:verticalSpacing="20dp"
+        android:numColumns="3"
+        android:id="@+id/gd_home_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </GridView>
+
+
+
+
+</RelativeLayout>

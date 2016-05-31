@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:background="#aa0000ff"
+        android:gravity="center"
+        android:textSize="25sp"
+        android:text="设置密码"
+        android:textColor="#000000"/>
+    <EditText
+        android:id="@+id/ed_passwordone"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入密码"
+        android:textColorHint="#55000000"
+        android:textColor="#000000"/>
+    <EditText
+        android:id="@+id/ed_passwordtwo"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请再次输入密码"
+        android:textColorHint="#55000000"
+        android:textColor="#000000"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:textSize="20sp"
+            android:text="保存密码"
+            android:id="@+id/bt_dialog_savepassword"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+        <Button
+            android:textSize="20sp"
+            android:text="取消设置"
+            android:id="@+id/bt_dialog_canclepassword"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+</LinearLayout>
