@@ -12,14 +12,15 @@
         android:text="设置中心"
         android:background="#aa0000ff"/>
 
-    <com.example.zzphoneguard.view.SettingConterItemView
-        android:id="@+id/svtv_setting_conter_aotuupdate"
+    <com.example.zzphoneguard.view.SettingCenterItemView
+        android:id="@+id/sciv_settingconter_aotuupdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         example:title="自动更新设置"
         example:content="自动更新已经关闭-自动更新已经打开"/>
 
-    <com.example.zzphoneguard.view.SettingConterItemView
+    <com.example.zzphoneguard.view.SettingCenterItemView
+        android:id="@+id/sciv_settingcenter_telsmsblack"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         example:title="黑名单拦截设置"

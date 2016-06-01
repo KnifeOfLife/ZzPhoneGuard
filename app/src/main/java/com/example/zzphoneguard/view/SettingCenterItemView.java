@@ -14,13 +14,13 @@ import com.example.zzphoneguard.R;
 /**
  * Created by 狗蛋儿 on 2016/5/4.
  */
-public class SettingConterItemView extends LinearLayout {
+public class SettingCenterItemView extends LinearLayout {
     private TextView tv_title;
     private TextView tv_content;
     private CheckBox cb_check;
     private String[] contents;
     private View item;
-    public SettingConterItemView(Context context, AttributeSet attrs) {
+    public SettingCenterItemView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initView();
         initEvent();
@@ -92,7 +92,7 @@ public class SettingConterItemView extends LinearLayout {
     }
 
 
-    public SettingConterItemView(Context context) {
+    public SettingCenterItemView(Context context) {
         super(context);
         initView();
     }

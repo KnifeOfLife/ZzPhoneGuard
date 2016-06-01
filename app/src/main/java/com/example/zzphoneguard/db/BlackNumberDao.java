@@ -21,6 +21,25 @@ public class BlackNumberDao {
     }
 
     /**
+     *
+     * @param phone
+     * 电话
+     * @return
+     * 拦截模式：1：短信 2：电话 3：全部拦截
+     */
+    public int getMode(String phone){
+        SQLiteDatabase database = dbhelper.getReadableDatabase();
+        Cursor cursor = database.rawQuery("select "+BlackNumberTable.MODE+" from "+BlackNumberTable.BLACKTABLE+" where "+BlackNumberTable.PHONE+"=?",new String[]{phone});
+        int mode = 0;
+        if (cursor.moveToNext()){
+            mode = cursor.getInt(0);
+        }else{
+            mode = 0;
+        }
+        return mode;
+    }
+
+    /**
      * 添加黑名单号码
      * @param bean
      */

@@ -1,20 +1,25 @@
 package com.example.zzphoneguard.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 
 import com.example.zzphoneguard.R;
+import com.example.zzphoneguard.service.TelSmsBlackService;
 import com.example.zzphoneguard.utils.MyConstants;
 import com.example.zzphoneguard.utils.SaveData;
-import com.example.zzphoneguard.view.SettingConterItemView;
+import com.example.zzphoneguard.utils.ServiceUtils;
+import com.example.zzphoneguard.view.SettingCenterItemView;
 
 /**
  * Created by 狗蛋儿 on 2016/5/4.
  */
 public class SettingCenterActivity extends Activity {
-    private SettingConterItemView sctv_aotuupdate;
+    private SettingCenterItemView sciv_aotuupdate;//自动更新设置
+    private SettingCenterItemView sciv_telsmsblack;//黑名单拦截设置
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,18 +33,33 @@ public class SettingCenterActivity extends Activity {
      * 初始化数据
      */
     private void initData() {
-        sctv_aotuupdate.setChecked(SaveData.getBoolean(getApplicationContext(),MyConstants.AOTUUPDATE,false));
+        sciv_aotuupdate.setChecked(SaveData.getBoolean(getApplicationContext(),MyConstants.AOTUUPDATE,false));
+        sciv_telsmsblack.setChecked(ServiceUtils.isRunningService(getApplicationContext(),"com.example.zzphoneguard.service.TelSmsBlackService"));
     }
 
     /**
      * 初始化组件事件
      */
     private void initEvent() {
-        sctv_aotuupdate.setItemClickListener(new View.OnClickListener() {
+        sciv_aotuupdate.setItemClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sctv_aotuupdate.setChecked(!sctv_aotuupdate.isChecked());
-                SaveData.putBoolean(getApplicationContext(), MyConstants.AOTUUPDATE,sctv_aotuupdate.isChecked());
+                sciv_aotuupdate.setChecked(!sciv_aotuupdate.isChecked());
+                SaveData.putBoolean(getApplicationContext(), MyConstants.AOTUUPDATE,sciv_aotuupdate.isChecked());
+            }
+        });
+        sciv_telsmsblack.setItemClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ServiceUtils.isRunningService(getApplicationContext(),"com.example.zzphoneguard.service.TelSmsBlackService")){
+                    Intent intent = new Intent(SettingCenterActivity.this, TelSmsBlackService.class);
+                    stopService(intent);
+                    sciv_telsmsblack.setChecked(false);
+                }else{
+                    Intent intent =new Intent(SettingCenterActivity.this,TelSmsBlackService.class);
+                    startService(intent);
+                    sciv_telsmsblack.setChecked(true);
+                }
             }
         });
     }
@@ -49,7 +69,8 @@ public class SettingCenterActivity extends Activity {
      */
     private void initView() {
         setContentView(R.layout.activity_settingcenter);
-        sctv_aotuupdate = (SettingConterItemView) findViewById(R.id.svtv_setting_conter_aotuupdate);
+        sciv_aotuupdate = (SettingCenterItemView) findViewById(R.id.sciv_settingconter_aotuupdate);
+        sciv_telsmsblack = (SettingCenterItemView) findViewById(R.id.sciv_settingcenter_telsmsblack);
     }
 
 }

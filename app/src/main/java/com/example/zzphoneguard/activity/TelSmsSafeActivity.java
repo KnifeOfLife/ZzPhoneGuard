@@ -231,6 +231,11 @@ public class TelSmsSafeActivity extends Activity {
                 datas.add(0,bean);
                 lv_telsmssafe.setSelection(0);
                 dialog.dismiss();
+                if (datas.size()==1){
+                    pb_loading.setVisibility(View.GONE);
+                    lv_telsmssafe.setVisibility(View.VISIBLE);
+                    tv_nodata.setVisibility(View.GONE);
+                }
                 adapter.notifyDataSetChanged();
             }
         });
@@ -263,6 +268,11 @@ public class TelSmsSafeActivity extends Activity {
                         //如果没有数据
                         if (datas.size()!=0){
                             Toast.makeText(TelSmsSafeActivity.this, "没有更多数据了", Toast.LENGTH_SHORT).show();
+                            pb_loading.setVisibility(View.GONE);
+                            lv_telsmssafe.setVisibility(View.VISIBLE);
+                            tv_nodata.setVisibility(View.GONE);
+
+                            adapter.notifyDataSetChanged();
                             return;
                         }
                         pb_loading.setVisibility(View.GONE);
@@ -318,7 +328,14 @@ public class TelSmsSafeActivity extends Activity {
     private class Myadapter extends BaseAdapter{
         @Override
         public int getCount() {
-            return datas.size();
+            int size = datas.size();
+            if (size==0){
+                pb_loading.setVisibility(View.GONE);
+                lv_telsmssafe.setVisibility(View.GONE);
+                tv_nodata.setVisibility(View.VISIBLE);
+
+            }
+            return size;
         }
 
 
@@ -371,7 +388,12 @@ public class TelSmsSafeActivity extends Activity {
 
                             dao.delete(bean.getPhone());//从数据库中删除数据
                             datas.remove(position);//删除容器中对应数据
-                            adapter.notifyDataSetChanged();//更新listView
+                            if (datas.size()<10||position==datas.size()){
+                                //如果数据少于10条或者用户删除的是最后一条数据，则加载更多数据
+                                initData();
+                            }else{
+                                adapter.notifyDataSetChanged();//更新listView
+                            }
                         }
                     }).setNegativeButton("取消",null);
                     builder.show();
