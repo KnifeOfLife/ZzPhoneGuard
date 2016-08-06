@@ -3,16 +3,16 @@ package com.example.zzphoneguard.activity;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Base64;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
@@ -25,13 +25,14 @@ import com.example.zzphoneguard.mode.UrlBean;
 import com.example.zzphoneguard.utils.MyConstants;
 import com.example.zzphoneguard.utils.SaveData;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -117,6 +118,48 @@ public class SplashActivity extends Activity {
             //如果设置中心设置了自动更新
             checkVersion();//联网检查版本信息
         }
+        //拷贝数据库
+        copyDB("address.db");
+    }
+
+    /**
+     * 拷贝数据库
+     * @param dbName assets目录下的文件名
+     */
+    private void copyDB(final String dbName) {
+        new Thread(){
+            public void run() {
+                //判断文件是否存在 如果存在就不拷贝
+                File file = new File("/data/data/"+getPackageName()+"/files/"+dbName);
+                if (file.exists()){
+                    return;
+                }
+                try {
+                    AssetManager assets  = getAssets();
+                    InputStream is = null;
+                    is = assets.open(dbName);
+                    FileOutputStream fos = openFileOutput(dbName, Context.MODE_PRIVATE);
+                    byte[] buffer = new byte[10240];
+                    int len = is.read(buffer);
+                    int counts = 1;
+                    while (len!=-1){
+                        fos.write(buffer,0,len);
+                        //每次读到100k的时候，刷新缓冲区的数据到文件中
+                        if (counts%10==0){
+                            fos.flush();
+                        }
+                        len = is.read(buffer);
+                        counts++;
+                    }
+                    fos.flush();
+                    fos.close();
+                    is.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }.start();
     }
 
     /**
