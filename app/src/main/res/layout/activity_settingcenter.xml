@@ -6,7 +6,7 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="65dp"
+        android:layout_height="80dp"
         android:gravity="center"
         android:textSize="25sp"
         android:text="设置中心"
@@ -25,5 +25,49 @@
         android:layout_height="wrap_content"
         example:title="黑名单拦截设置"
         example:content="黑名单拦截已经关闭-黑名单拦截已经打开"/>
+
+    <com.example.zzphoneguard.view.SettingCenterItemView
+        android:id="@+id/sciv_settingcenter_phonelocationservice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        example:title="来电归属地设置"
+        example:content="来电归属地设置已经关闭-来电归属地设置已经打开"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#11000000"
+        android:clickable="true"
+        android:id="@+id/rl_settingcenter_locationstyle">
+        <TextView
+            android:id="@+id/tv_settingcenter_locationstyle_title"
+            android:layout_marginLeft="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="归属地显示风格"/>
+        <TextView
+            android:layout_below="@+id/tv_settingcenter_locationstyle_title"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="5dp"
+            android:id="@+id/tv_settingcenter_locationstyle_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="卫士蓝"/>
+        <ImageView
+            android:clickable="false"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_centerVertical="true"
+            android:id="@+id/iv_settingcenter_locationstyle_select"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/iv_jiantou_selector"/>
+
+        <TextView
+            android:layout_below="@id/tv_settingcenter_locationstyle_content"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#44000000"/>
+    </RelativeLayout>
 
 </LinearLayout>

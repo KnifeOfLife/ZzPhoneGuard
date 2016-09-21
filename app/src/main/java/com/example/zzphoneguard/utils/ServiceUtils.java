@@ -16,7 +16,7 @@ public class ServiceUtils {
     public static boolean isRunningService(Context context,String serviceName){
         boolean isChecked = false;
         ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
-        List<ActivityManager.RunningServiceInfo> runningServices = am.getRunningServices(50);
+        List<ActivityManager.RunningServiceInfo> runningServices = am.getRunningServices(100);
         for (ActivityManager.RunningServiceInfo runningService:runningServices) {
             if (runningService.service.getClassName().equals(serviceName)){
                 isChecked = true;

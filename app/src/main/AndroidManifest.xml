@@ -16,10 +16,11 @@
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/main_icon"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -46,10 +47,13 @@
         <activity
             android:name=".activity.Setup4LostFindActivity"
             android:launchMode="singleTask"/>
-        <activity android:name=".activity.ContactsActivity"/>
+        <activity android:name=".activity.ContactsActivity"
+            android:theme="@style/ContactsTheme"/>
         <activity android:name=".activity.TelSmsSafeActivity"/>
-        <activity android:name=".activity.PhoneLogActivity"/>
-        <activity android:name=".activity.SmsLogActivity"/>
+        <activity android:name=".activity.PhoneLogActivity"
+                  android:theme="@style/ContactsTheme"/>
+        <activity android:name=".activity.SmsLogActivity"
+                  android:theme="@style/ContactsTheme"/>
         <activity android:name=".activity.AToolActivity"/>
         <activity android:name=".activity.PhoneLocationActivity"/>
 
@@ -65,6 +69,7 @@
         </receiver>
 
         <service android:name=".service.LocationService"/>
+        <service android:name=".service.ComingPhoneService"/>
 
         <receiver
             android:name=".broadcastreceiver.DeviceAdminSample"
