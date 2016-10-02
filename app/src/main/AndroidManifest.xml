@@ -17,6 +17,8 @@
     <uses-permission android:name="android.permission.CALL_PHONE"/>
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
+    <uses-permission android:name="android.permission.WRITE_SMS"/>
 
     <application
         android:allowBackup="true"
@@ -56,6 +58,8 @@
                   android:theme="@style/ContactsTheme"/>
         <activity android:name=".activity.AToolActivity"/>
         <activity android:name=".activity.PhoneLocationActivity"/>
+        <activity android:name=".activity.RocketSmokeActivity"/>
+        <activity android:name=".activity.AppManagerActivity"/>
 
         <service
             android:name=".service.LostFindService"
@@ -89,6 +93,9 @@
 
         <service
             android:name=".service.TelSmsBlackService">
+        </service>
+
+        <service android:name=".service.RocketService">
         </service>
     </application>
 

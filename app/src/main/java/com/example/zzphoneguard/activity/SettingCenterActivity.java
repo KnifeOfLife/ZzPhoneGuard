@@ -49,6 +49,8 @@ public class SettingCenterActivity extends Activity {
         sciv_aotuupdate.setChecked(SaveData.getBoolean(getApplicationContext(),MyConstants.AOTUUPDATE,false));
         sciv_telsmsblack.setChecked(ServiceUtils.isRunningService(getApplicationContext(),"com.example.zzphoneguard.service.TelSmsBlackService"));
         sciv_phoneLocation.setChecked(ServiceUtils.isRunningService(getApplicationContext(),"com.example.zzphoneguard.service.ComingPhoneService"));
+        int index = Integer.parseInt(SaveData.getString(getApplicationContext(), MyConstants.STYLEINDEX,"0"));
+        tv_locationStyle_content.setText(styleName[index]);
     }
 
     /**

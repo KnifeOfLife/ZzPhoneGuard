@@ -51,8 +51,7 @@
             android:layout_marginBottom="5dp"
             android:id="@+id/tv_settingcenter_locationstyle_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="卫士蓝"/>
+            android:layout_height="wrap_content"/>
         <ImageView
             android:clickable="false"
             android:layout_alignParentRight="true"

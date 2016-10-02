@@ -1,7 +1,10 @@
 package com.example.zzphoneguard.service;
 
 import android.app.Service;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.PixelFormat;
 import android.os.IBinder;
 import android.telephony.PhoneStateListener;
@@ -33,15 +36,32 @@ public class ComingPhoneService extends Service{
     private View view;
     private float startX;
     private float startY;
+    private OutCallReceiver outCallReceiver;
+    private boolean isOutCall = false;//是否是外拨电话
 
     @Override
     public IBinder onBind(Intent intent) {
         return null;
     }
 
+    private class OutCallReceiver extends BroadcastReceiver{
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            isOutCall = true;
+            String phoneNumber = getResultData();
+            showLocationToast(phoneNumber );
+        }
+    }
+
     @Override
     public void onCreate() {
         super.onCreate();
+
+        outCallReceiver = new OutCallReceiver();
+        IntentFilter filter = new IntentFilter("android.intent.action.NEW_OUTGOING_CALL");
+        registerReceiver(outCallReceiver,filter);
+
         wm = (WindowManager) getSystemService(WINDOW_SERVICE);
         initToastParams();
         tm = (TelephonyManager) getSystemService(TELEPHONY_SERVICE);
@@ -54,7 +74,11 @@ public class ComingPhoneService extends Service{
                         closeLocationToast();
                         break;
                     case TelephonyManager.CALL_STATE_OFFHOOK://通话状态
-                        closeLocationToast();
+                        if (isOutCall){
+                            isOutCall = false;
+                        }else {
+                            closeLocationToast();
+                        }
                         break;
                     case TelephonyManager.CALL_STATE_RINGING://响铃状态
                         showLocationToast(incomingNumber);
@@ -104,6 +128,7 @@ public class ComingPhoneService extends Service{
      * @param incomingNumber 来电号码
      */
     private void showLocationToast(String incomingNumber){
+        closeLocationToast();
         int backgrounds[] = new int[]{R.drawable.call_locate_blue,
                 R.drawable.call_locate_gray,R.drawable.call_locate_green,
                 R.drawable.call_locate_orange, R.drawable.call_locate_white};
@@ -158,5 +183,6 @@ public class ComingPhoneService extends Service{
     public void onDestroy() {
         super.onDestroy();
         tm.listen(listener,PhoneStateListener.LISTEN_NONE);
+        unregisterReceiver(outCallReceiver);
     }
 }
