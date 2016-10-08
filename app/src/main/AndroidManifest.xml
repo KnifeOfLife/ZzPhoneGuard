@@ -19,6 +19,7 @@
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
     <uses-permission android:name="android.permission.WRITE_SMS"/>
+    <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
 
     <application
         android:allowBackup="true"
@@ -49,17 +50,22 @@
         <activity
             android:name=".activity.Setup4LostFindActivity"
             android:launchMode="singleTask"/>
-        <activity android:name=".activity.ContactsActivity"
+        <activity
+            android:name=".activity.ContactsActivity"
             android:theme="@style/ContactsTheme"/>
         <activity android:name=".activity.TelSmsSafeActivity"/>
-        <activity android:name=".activity.PhoneLogActivity"
-                  android:theme="@style/ContactsTheme"/>
-        <activity android:name=".activity.SmsLogActivity"
-                  android:theme="@style/ContactsTheme"/>
+        <activity
+            android:name=".activity.PhoneLogActivity"
+            android:theme="@style/ContactsTheme"/>
+        <activity
+            android:name=".activity.SmsLogActivity"
+            android:theme="@style/ContactsTheme"/>
         <activity android:name=".activity.AToolActivity"/>
         <activity android:name=".activity.PhoneLocationActivity"/>
         <activity android:name=".activity.RocketSmokeActivity"/>
         <activity android:name=".activity.AppManagerActivity"/>
+        <activity android:name=".activity.TaskManagerActivity"/>
+        <activity android:name=".activity.TaskManagerSettingActivity"/>
 
         <service
             android:name=".service.LostFindService"
@@ -91,11 +97,12 @@
 
         <activity android:name=".activity.SettingCenterActivity"/>
 
-        <service
-            android:name=".service.TelSmsBlackService">
+        <service android:name=".service.TelSmsBlackService">
         </service>
-
         <service android:name=".service.RocketService">
+        </service>
+        <service
+            android:name=".service.ClearTaskInLockscreenService">
         </service>
     </application>
 

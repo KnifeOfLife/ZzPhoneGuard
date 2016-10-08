@@ -16,4 +16,5 @@ public interface MyConstants {
     String TOASTX = "toastx";//自定义土司的宽度
     String TOASTY = "toasty";//自定义土司的高度
     String STYLEINDEX = "styleindex";//归属地弹窗背景样式
+    String SHOWSYSTEMTASKS = "showsystemtasks";//显示系统进程
 }

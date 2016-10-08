@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#dbd9d9"
+                android:clickable="true">
+
+    <ImageView
+        android:id="@+id/iv_taskmanager_listview_item_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/app"/>
+
+    <TextView
+        android:id="@+id/tv_taskmanager_listview_item_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:layout_toRightOf="@id/iv_taskmanager_listview_item_icon"
+        android:text="计算器"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:id="@+id/tv_taskmanager_listview_item_memsize"
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_taskmanager_listview_item_title"
+        android:layout_marginLeft="5dip"
+        android:layout_toRightOf="@id/iv_taskmanager_listview_item_icon"
+        android:text="位置"
+        android:textColor="#000000"/>
+
+    <CheckBox
+        android:id="@+id/tv_taskmanager_listview_item_checked"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:clickable="true"/>
+
+</RelativeLayout>
