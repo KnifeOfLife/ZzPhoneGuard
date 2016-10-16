@@ -143,6 +143,11 @@ public class SmsEngine {
                 final Cursor cursor = context.getContentResolver().query(uri,
                         new String[] { "address", "date", "body", "type" },
                         null, null, " _id desc");
+
+                if (cursor.getCount()==0){
+                    return;
+                }
+
                 File file = new File(context.getCacheDir().getPath(), "sms.json");
                 try {
                     FileOutputStream fos = new FileOutputStream(file);
@@ -198,69 +203,97 @@ public class SmsEngine {
         }.start();
     }
 
-    public static void smsRestoreJson(final Activity activity,final BaikeProgress pd){
-        new Thread(){
+    /**
+     * 通过子线程来做短信的还原json格式
+     *
+     * @param context
+     * @param pd
+     *            通过接口回调备份的数据（所有回调方法都在主线程中执行）
+     */
+    public static void smsResumnJson(final Activity context,
+                                     final BaikeProgress pd) {
+        final Data data = new Data();
+        new Thread() {
             @Override
             public void run() {
-                final Data data = new Data();
+                // 1,通过内容提供者保存短信
                 Uri uri = Uri.parse("content://sms");
+
+                // 2,获取备份的短信
                 try {
-                    FileInputStream fis = new FileInputStream(new File(activity.getCacheDir().getPath(), "sms.json"));
-                    //json数据的合并
+                    FileInputStream fis = new FileInputStream(new File(
+                            context.getCacheDir().getPath(),
+                            "sms.json"));
+                    // json数据的合并
                     StringBuilder jsonSmsStr = new StringBuilder();
-                    //io流的封装，把字节流封装成缓冲的字节流
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(fis));
+                    // io流的封装 把字节流封装成缓冲的字符流
+                    BufferedReader reader = new BufferedReader(
+                            new InputStreamReader(fis));
+
                     String line = reader.readLine();
-                    while (line!=null){
+                    while (line != null) {
                         jsonSmsStr.append(line);
                         line = reader.readLine();
                     }
-                    //解析Json数据
-                    JSONObject jsonObject = new JSONObject(jsonSmsStr.toString());
-                    final int counts = Integer.parseInt(jsonObject.getString("count"));
-                    activity.runOnUiThread(new Runnable() {
+
+                    // 解析json数据
+                    JSONObject jsonObj = new JSONObject(jsonSmsStr.toString());
+                    //短信的个数
+                    final int counts = Integer.parseInt(jsonObj.getString("count"));
+                    System.out.println();
+
+                    //设置回调结果的 show和 setMax方法
+                    context.runOnUiThread(new Runnable() {
+
                         @Override
                         public void run() {
                             pd.show();
                             pd.setMax(counts);// 设置进度条总进度
+
                         }
                     });
 
-                    JSONArray jsonArray = (JSONArray) jsonObject.get("smses");
-                    for (int i=0;i<counts;i++){
+                    //循环读取短信
+                    JSONArray jarray = (JSONArray) jsonObj.get("smses");
+                    for (int i = 0; i < counts ;i++) {
                         data.progress = i;
-                        SystemClock.sleep(100);
-
-                        JSONObject smsjson = jsonArray.getJSONObject(i);
+                        //获取一条短信
+                        JSONObject smsjson = jarray.getJSONObject(i);
 
                         ContentValues values = new ContentValues();
                         values.put("address", smsjson.getString("address"));
-                        values.put("body", EncryptTools.decryption(smsjson.getString("body")));
+                        values.put("body", EncryptTools.decryption( smsjson.getString("body")));
                         values.put("date", smsjson.getString("date"));
                         values.put("type", smsjson.getString("type"));
 
                         //往短信数据中加一条记录
-                        activity.getContentResolver().insert(uri, values);
-                        activity.runOnUiThread(new Runnable() {
+                        context.getContentResolver().insert(uri, values);
+
+                        //回调结果当前进度
+                        context.runOnUiThread(new Runnable() {
+
                             @Override
                             public void run() {
                                 pd.setProgress(data.progress);
                             }
                         });
                     }
-                    activity.runOnUiThread(new Runnable() {
+                    reader.close();// 关闭io流
+
+                    //回调备份完成的结果
+                    context.runOnUiThread(new Runnable() {
 
                         @Override
                         public void run() {
                             pd.dismiss();
                         }
                     });
-                    reader.close();//关闭io流
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         }.start();
+
     }
 
 }

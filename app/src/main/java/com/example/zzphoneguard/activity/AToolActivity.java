@@ -71,7 +71,7 @@ public class AToolActivity extends Activity {
      * @param v
      */
     public void smsRestore(View v){
-        SmsEngine.smsRestoreJson(AToolActivity.this, new BaikeProgress() {
+        SmsEngine.smsResumnJson(AToolActivity.this, new BaikeProgress() {
             @Override
             public void show() {
                 pd.show();
@@ -92,5 +92,14 @@ public class AToolActivity extends Activity {
                 pd.setProgress(progress);
             }
         });
+    }
+
+    /**
+     * 程序锁的点击事件
+     * @param v
+     */
+    public void lockedActivity(View v){
+        Intent intent = new Intent(this,LockedActivity.class);
+        startActivity(intent);
     }
 }

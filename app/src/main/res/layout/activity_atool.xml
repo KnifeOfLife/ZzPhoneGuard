@@ -67,6 +67,7 @@
         android:layout_height="1dp"
         android:background="#44000000"/>
     <TextView
+        android:onClick="lockedActivity"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:clickable="true"

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#aa0000ff">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_alignParentTop="true"
+            android:gravity="center"
+            android:text="输入密码"
+            android:textSize="25sp"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_watchdog_enterpass_icon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/app"/>
+
+    <EditText
+        android:layout_marginTop="80dp"
+        android:id="@+id/et_watchdog_enterpass_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入密码"/>
+
+    <Button
+        android:id="@+id/bt_watchdog_enterpass_enter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:text="确定"
+        android:textSize="18sp"/>
+
+</LinearLayout>

@@ -32,6 +32,13 @@
         android:layout_height="wrap_content"
         example:title="来电归属地设置"
         example:content="来电归属地设置已经关闭-来电归属地设置已经打开"/>
+    <com.example.zzphoneguard.view.SettingCenterItemView
+        android:id="@+id/sciv_settingcenter_watchdogservice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        example:title="看门狗服务"
+        example:content="看门狗服务已经关闭-看门狗服务已经打开"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

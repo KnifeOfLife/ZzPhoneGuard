@@ -3,7 +3,6 @@ package com.example.zzphoneguard.activity;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -16,7 +15,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.zzphoneguard.R;
-import com.example.zzphoneguard.engine.ReadContactsEngine;
 import com.example.zzphoneguard.mode.ContactBean;
 import com.example.zzphoneguard.utils.MyConstants;
 
@@ -76,6 +74,14 @@ public abstract class BaseContactsTelSmsActivity extends ListActivity {
                         pd.dismiss();
                         pd=null;
                     }
+
+                    if (contacts.size()==0){
+                        Intent intent = new Intent();
+                        intent.putExtra(MyConstants.SAFENUMBER,"");
+                        setResult(1,intent);
+                        finish();
+                    }
+
                     adapter.notifyDataSetChanged();
                     break;
                 default:

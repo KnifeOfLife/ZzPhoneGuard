@@ -2,7 +2,6 @@ package com.example.zzphoneguard.activity;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -79,6 +78,9 @@ public class Setup3LostFindActivity extends BaseSetupActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (data!=null){
             String phone = data.getStringExtra(MyConstants.SAFENUMBER);
+            if (TextUtils.isEmpty(phone)){
+                Toast.makeText(Setup3LostFindActivity.this, "没有好友选择联系人", Toast.LENGTH_SHORT).show();
+            }
             ed_safenumber.setText(phone);
         }
         super.onActivityResult(requestCode, resultCode, data);
