@@ -69,25 +69,31 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="清理"/>
+            android:text="清理"
+            android:layout_marginRight="1dp"/>
         <Button
             android:onClick="selectAll"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="全选"/>
+            android:text="全选"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"/>
         <Button
             android:onClick="unSelect"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="反选"/>
+            android:text="反选"
+            android:layout_marginRight="1dp"
+            android:layout_marginLeft="1dp"/>
         <Button
             android:onClick="setting"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="设置"/>
+            android:text="设置"
+            android:layout_marginLeft="1dp"/>
 
     </LinearLayout>
 

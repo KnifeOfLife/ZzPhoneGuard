@@ -88,6 +88,8 @@ public class AppManagerEngine {
 
             bean.setAppPath(packageInfo.applicationInfo.sourceDir);
 
+            bean.setUid(packageInfo.applicationInfo.uid);
+
             //添加一个apk信息
             apks.add(bean);
         }

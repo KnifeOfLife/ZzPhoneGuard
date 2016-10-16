@@ -21,6 +21,7 @@
     <uses-permission android:name="android.permission.WRITE_SMS"/>
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -70,6 +71,7 @@
         <activity android:name=".activity.LockedActivity"/>
         <activity android:name=".activity.WatchDogEnterPassActivity"
             android:launchMode="singleInstance"/>
+        <activity android:name=".activity.ConnectivityActivity"/>
 
         <service
             android:name=".service.LostFindService"

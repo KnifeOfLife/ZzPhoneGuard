@@ -76,6 +76,12 @@ public class HomeActivity extends Activity {
                         startActivity(intent);
                         break;
                     }
+                    case 4:{//流量管理
+                        Intent intent = new Intent(HomeActivity.this, ConnectivityActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
+
 
                     case 7: {//高级工具
                         Intent intent = new Intent(HomeActivity.this, AToolActivity.class);

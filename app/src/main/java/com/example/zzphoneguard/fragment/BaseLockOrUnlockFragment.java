@@ -43,7 +43,8 @@ public class BaseLockOrUnlockFragment extends Fragment {
     protected List<AppBean> unlockedUserDatas = new ArrayList<>();
     protected LockedDao dao;
 
-    protected List<String> allLockedPacks;//所有加锁的app的包名
+    protected List<String> allLockedPacks = new ArrayList<>();//所有加锁的app的包名
+    private List<AppBean> allApks = new ArrayList<>();
 
     public List<String> getAllLockedPacks() {
         return allLockedPacks;
@@ -103,19 +104,34 @@ public class BaseLockOrUnlockFragment extends Fragment {
             public void run() {
                 synchronized (new Object()) {
                     handler.obtainMessage(LOADING).sendToTarget();
-                    List<AppBean> allApks = AppManagerEngine.getAllApks(getActivity());
-                    unlockedSystemDatas.clear();
-                    unlockedUserDatas.clear();
-                    for (AppBean bean : allApks) {
-                        if (isMyData(bean.getPackName())) {
-                            if (bean.isSystem()) {
-                                unlockedSystemDatas.add(bean);
-                            } else {
-                                unlockedUserDatas.add(bean);
+                    if (allApks.size()==0) {
+                        allApks = AppManagerEngine.getAllApks(getActivity());
+                        unlockedSystemDatas.clear();
+                        unlockedUserDatas.clear();
+                        for (AppBean bean : allApks) {
+                            if (isMyData(bean.getPackName())) {
+                                if (bean.isSystem()) {
+                                    unlockedSystemDatas.add(bean);
+                                } else {
+                                    unlockedUserDatas.add(bean);
+                                }
                             }
                         }
+                        handler.obtainMessage(FINISH).sendToTarget();
+                    }else {
+                        unlockedSystemDatas.clear();
+                        unlockedUserDatas.clear();
+                        for (AppBean bean : allApks) {
+                            if (isMyData(bean.getPackName())) {
+                                if (bean.isSystem()) {
+                                    unlockedSystemDatas.add(bean);
+                                } else {
+                                    unlockedUserDatas.add(bean);
+                                }
+                            }
+                        }
+                        handler.obtainMessage(FINISH).sendToTarget();
                     }
-                    handler.obtainMessage(FINISH).sendToTarget();
                 }
 
             }

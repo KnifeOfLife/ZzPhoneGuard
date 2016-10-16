@@ -14,6 +14,15 @@ public class AppBean {
     private boolean isSystem;//是否是系统app
     private String packName;//包名
     private String appPath;//安装路径
+    private int uid;//应用id
+
+    public int getUid() {
+        return uid;
+    }
+
+    public void setUid(int uid) {
+        this.uid = uid;
+    }
 
     public String getAppPath() {
         return appPath;
