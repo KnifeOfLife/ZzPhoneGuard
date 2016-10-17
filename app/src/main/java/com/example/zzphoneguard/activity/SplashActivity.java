@@ -118,8 +118,11 @@ public class SplashActivity extends Activity {
             //如果设置中心设置了自动更新
             checkVersion();//联网检查版本信息
         }
-        //拷贝数据库
+        //拷贝手机归属地数据库
         copyDB("address.db");
+        //拷贝病毒数据库
+        copyDB("antivirus.db");
+
     }
 
     /**

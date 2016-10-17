@@ -20,8 +20,9 @@
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS"/>
     <uses-permission android:name="android.permission.WRITE_SMS"/>
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES"/>
-    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
+    <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -69,9 +70,11 @@
         <activity android:name=".activity.TaskManagerActivity"/>
         <activity android:name=".activity.TaskManagerSettingActivity"/>
         <activity android:name=".activity.LockedActivity"/>
-        <activity android:name=".activity.WatchDogEnterPassActivity"
+        <activity
+            android:name=".activity.WatchDogEnterPassActivity"
             android:launchMode="singleInstance"/>
         <activity android:name=".activity.ConnectivityActivity"/>
+        <activity android:name=".activity.AntivirusActivity"/>
 
         <service
             android:name=".service.LostFindService"

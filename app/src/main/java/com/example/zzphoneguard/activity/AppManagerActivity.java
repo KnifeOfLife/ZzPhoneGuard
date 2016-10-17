@@ -294,8 +294,13 @@ public class AppManagerActivity extends Activity {
 
     private void startApp() {
         String packName = clickBean.getPackName();
+        pm.getLaunchIntentForPackage(packName);
         //通过包名获取意图
         Intent launchIntentForPackage = pm.getLaunchIntentForPackage(packName);
+        if (launchIntentForPackage == null){
+            Toast.makeText(AppManagerActivity.this, "该app没有启动界面", Toast.LENGTH_SHORT).show();
+            return;
+        }
         startActivity(launchIntentForPackage);
 
     }
