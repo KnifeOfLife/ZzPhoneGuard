@@ -14,48 +14,49 @@
             android:layout_height="80dp"
             android:layout_alignParentTop="true"
             android:gravity="center"
-            android:text="通讯中心"
+            android:text="缓存清理"
             android:textSize="25sp"/>
 
         <Button
-            android:id="@+id/bt_addtelsmssafe"
-            android:layout_width="80dp"
+            android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="10dp"
             android:background="#00000000"
-            android:text="添加"
+            android:onClick="clearAll"
+            android:text="一键清理"
             android:textSize="20sp"/>
 
     </RelativeLayout>
+
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ListView
-            android:id="@+id/lv_telsmssafe_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone"/>
-
-        <TextView
-            android:id="@+id/tv_telsmssafe_nodata"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="没有数据"
-            android:textSize="20sp"
-            android:visibility="gone"/>
 
         <ProgressBar
-            android:id="@+id/pb_telsmssafe_loading"
+            android:id="@+id/pb_cache_scaning_cache"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"/>
+
+
+        <ListView
+            android:id="@+id/lv_cache_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </ListView>
+
+        <TextView
+            android:id="@+id/tv_cache_nodata"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="gone"/>
-
+            android:text="您的手机非常干净，没有缓存信息"/>
     </FrameLayout>
-
 
 </LinearLayout>

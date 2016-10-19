@@ -87,6 +87,11 @@ public class HomeActivity extends Activity {
                         startActivity(intent);
                         break;
                     }
+                    case 6: {//缓存清理
+                        Intent intent = new Intent(HomeActivity.this, CacheActivity.class);
+                        startActivity(intent);
+                        break;
+                    }
 
                     case 7: {//高级工具
                         Intent intent = new Intent(HomeActivity.this, AToolActivity.class);

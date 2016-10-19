@@ -80,7 +80,6 @@ public class AntivirusActivity extends Activity {
                 .create();
         alertDialog.show();
         RequestParams params = new RequestParams("http://192.168.1.107:8080/VirusServer/servlet/getversion");
-        params.setConnectTimeout(5000);
         x.http().get(params, new CommonCallback<String>() {
             @Override
             public void onSuccess(String s) {
@@ -127,7 +126,6 @@ public class AntivirusActivity extends Activity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         RequestParams params = new RequestParams("http://192.168.1.107:8080/VirusServer/servlet/getviruses");
-                        params.setConnectTimeout(5000);
                         x.http().get(params, new CommonCallback<String>() {
                             @Override
                             public void onSuccess(String s) {
