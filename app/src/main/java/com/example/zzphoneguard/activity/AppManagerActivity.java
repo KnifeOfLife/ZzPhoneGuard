@@ -37,6 +37,7 @@ import android.widget.Toast;
 import com.example.zzphoneguard.R;
 import com.example.zzphoneguard.engine.AppManagerEngine;
 import com.example.zzphoneguard.mode.AppBean;
+import com.example.zzphoneguard.utils.DensityUtil;
 import com.stericson.RootTools.RootTools;
 
 import java.util.ArrayList;
@@ -351,7 +352,8 @@ public class AppManagerActivity extends Activity {
                 clickBean = (AppBean) lv_datas.getItemAtPosition(position);
                 int[] location = new int[2];
                 view.getLocationInWindow(location);
-                showPopupWindow(view,location[0]+150,location[1]);
+                int px = DensityUtil.dip2px(getApplicationContext(),50);
+                showPopupWindow(view,location[0]+px,location[1]);
             }
         });
         //listview滑动事件的处理

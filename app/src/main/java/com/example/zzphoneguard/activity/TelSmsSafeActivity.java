@@ -9,10 +9,8 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.os.SystemClock;
 import android.text.TextUtils;
 import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -33,9 +31,11 @@ import com.example.zzphoneguard.R;
 import com.example.zzphoneguard.db.BlackNumberDao;
 import com.example.zzphoneguard.db.BlackNumberTable;
 import com.example.zzphoneguard.mode.BlackNumberBean;
+import com.example.zzphoneguard.utils.DensityUtil;
 import com.example.zzphoneguard.utils.MyConstants;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by 狗蛋儿 on 2016/5/8.
@@ -140,9 +140,12 @@ public class TelSmsSafeActivity extends Activity {
             int[] location = new int[2];
             bt_addtelsmssafe.getLocationInWindow(location);
             contentView.startAnimation(sa);
+            int px = DensityUtil.dip2px(getApplicationContext(),80);
             pw.showAtLocation(bt_addtelsmssafe, Gravity.RIGHT | Gravity.TOP,
-                    location[0]-(getWindowManager().getDefaultDisplay().getWidth()-bt_addtelsmssafe.getWidth()),
-                    location[1] - 50 + bt_addtelsmssafe.getHeight() + 70);
+//                    location[0]-(getWindowManager().getDefaultDisplay().getWidth()-bt_addtelsmssafe.getWidth()),
+//                    location[1] + bt_addtelsmssafe.getHeight() +px
+                    0,
+                    px);
         }
     }
 
